@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    //物件縮寫
+    //請將以下兩個合併至一個物件上
+    // const Frieza = '佛利沙'
+    // const GinyuTeam = {
+    //     Ginyu: '基紐',
+    //     Jeice: '吉斯',
+    //     burter:'巴特',
+    //     //...
+    // }
+
+    // const newTeam = {
+    //     // GinyuTeam : GinyuTeam,
+    //     // Frieza: Frieza
+    //     //如果前後名稱一致的時候就不需要重複寫，下面是縮寫
+    //     Frieza,
+    //     GinyuTeam
+    // }
+    // console.log(newTeam);
+
+    //案例
+    //在vue.js CLI常見情境
+    // import Vue from 'vue'
+    // import App from './App'
+    // import router from './router'
+    // //將套件由'./App'路徑載入，並使用App這個變數名稱
+    // new Vue({
+    //     el:'#app',
+    //     // router: router,
+    //     router,
+    //     template:'<App/>',
+    //     components:{ App }
+    // });
+
+    //物件涵式的縮寫
+    //縮寫以下showPosture Function
+    // const newTeam = {
+    //     //...
+    //     showPosture: function () {
+    //         console.log('我們是 基紐特戰隊')
+    //     }
+    // }
+    //上面是傳統物件涵式的寫法
+    //下面是物件涵式的縮寫
+    //寫完後再chrom寫 newTeam.showPosture()
+    // const newTeam = {
+    //     //...
+    //     showPosture () {
+    //         console.log('我們是 基紐特戰隊')
+    //     }
+    // }
+
+    //搭配解構使用
+    //將以下物件指向賦予到另一個物件上，並且避免參考
+    const GinyuTeam = {
+        Ginyu: {
+            name: '基紐'
+        },
+        Jeice: {
+            name: '吉斯'
+        },
+        burter: {
+            name: '巴特'
+        },
+        //....
+    }
+    // const newTeam = GinyuTeam;
+    const newTeam = {
+        ...GinyuTeam//解構的方式，一個一個的值就會被取出來，重新賦予到新的物件上，加上小明後， 
+        //原始的GinyuTeam是不會受到影響的
+    };
+      newTeam.ming = '小明';
+      newTeam.hua = '小華';
+      newTeam.li = '利利';
+
+      console.log(newTeam, GinyuTeam)
+
+    </script>
+    
+</body>
+</html>

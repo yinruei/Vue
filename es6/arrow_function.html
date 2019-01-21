@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    //改寫傳統涵式
+    //將以下改寫成Arrow Function，並嘗試縮寫形式
+    // var callSomeone = function (someone) {
+    //     return someone + '吃飯了'
+    // }
+    // console.log(callSomeone('小明'))
+
+    // var callSomeone = (someone) => {
+    //     return someone + '吃飯了'
+    // }
+    // console.log(callSomeone('小明'))
+
+    // var callSomeone = someone => someone + '吃飯了'
+    // console.log(callSomeone('小明'))
+
+    // var farm = farmer => farmer + '該種田了'
+    // console.log(farm('曉華')) 
+
+    // var callSomeone = () => '小明' + '吃飯了'
+    // console.log(callSomeone())
+
+    // 沒有arguement 參數
+    // 將以下改寫成Arrow Function，並觀察差異
+    // const updateEasyCard = function () {
+    //     let cash = 0;
+    //     console.log(arguments);//arguments
+    // }
+    // updateEasyCard(10, 50, 100, 50, 5, 1, 500);
+
+        //改成箭頭涵式後...
+    // const updateEasyCard = (...arg) => {
+    //     let cash = 0;
+    //     console.log(arg);//arguments
+    // }
+    // updateEasyCard(10, 50, 100, 50, 5, 1, 500);
+
+    // This綁定差異
+    // var name = "全域阿婆"
+    // var auntie = {
+    //     name:'漂亮阿姨',
+    //     callName: function () {
+    //         console.log('1',this.name, this);
+    //         window.setTimeout(function () {
+    //             console.log('2',this.name);
+    //             console.log('3',this);
+    //         }, 10);
+    //     },
+
+    //     callName2: () => {
+    //         console.log('1 arrow', this.name, this);
+    //         window.setTimeout(() => {
+    //             console.log('2 arrow', this.name);
+    //             console.log('3 arrow', this);
+    //         }, 10);
+    //     },
+    // }
+    // // 在物件內使用arrow function，他所指向的"可能"是全域
+    // // 不是所有的情境都適合arrow function
+    //     auntie.callName();
+    //     auntie.callName2();
+
+    // 傳統this = 涵式的呼叫方式
+    // setTimeout是指window setTimeout是指window，所以是指向全域環境下
+
+
+    //善用的方式
+    //請將內層的console.log能夠指向 auntie 這個物件
+    var auntie = {
+        name:'漂亮阿姨',
+        callName () {
+            var vm = this;//vm就是指向auntie這個物件
+            setTimeout(() => {
+                console.log(vm, vm.name);
+            }, 10);
+        },
+    }
+
+    auntie.callName();
+
+
+    // var name = '全域阿婆';
+    // var auntie = {
+    // name: '漂亮阿姨',
+    // callName: function () {
+    //     console.log(this.name);
+    // }
+    // }
+    // // 將 function 指向物件內的 function，不過不重要
+    // callThisName = auntie.callName; 
+    // callThisName()                  // '全域阿婆
+    </script>
+</body>
+</html>

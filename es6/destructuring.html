@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    // #1.陣列解構
+    // 1.將family的值，一一賦予到變數上
+    // 2.請將後面三個名字賦予到另一個陣列上
+
+    // let family = ['小明', '杰倫', '阿姨', '老媽', '老爸']
+    // // let ming = family[0];
+    // // let jay = family[1];
+    // // let auntie = family[2];
+
+    // let [, , auntie, mom ,father] = family;
+    // console.log(auntie, mom, father)
+
+    //請交換以下兩個變數
+    // let Goku = '悟空';
+    // let Ginyu = '基紐';
+
+    // // [Goku, Ginyu] = [Ginyu, Goku];
+    // // console.log(Goku, Ginyu)
+
+    //請拆解以下字元到單一變數上
+    // let str = '基紐特攻隊';
+    // let [q, a, z, w, s] = str;
+    // // [q, a, z, w, s] = str;兩種寫法都可以
+    // console.log(q, a, z, w, s);
+
+    //物件的解構賦值，取出其中一個值，並附在新的變數上
+    // let GinyuTeam = {
+    //     Ginyu:'基紐',
+    //     Jeice:'吉斯',
+    //     burter:'巴特',
+    // }
+    // let {Ginyu: Goku} = GinyuTeam;//把屬性Ginyu換成Goku，其值不會變
+    // console.log(Goku)
+
+    //延伸問題
+    // let { ming: Goku, family: [, mom] } = { ming: '小明', family: ['阿姨','老媽','老爸'] };
+    // //小明的值會傳到左方物件的屬性，左方物件的屬性被重新命名，所以Goku就是右方的小明
+    // //右邊的family就鏡射到左方的family，只不過他是重新取得裡面mom的變數，也就是第二個位置的變數,
+    // //第一個是阿姨，第二個是老媽，所以老媽的值就被傳過來
+    // console.log(Goku, mom);//請問答案是什麼?
+
+    //預設值
+    // let [ming = '小明', jay= '杰倫'] = ['阿明']
+    // //第一個會被賦值，第二個會用預設
+    // //ming: "阿明"
+    // //jay:"杰倫"
+    // console.log(ming, jay);
+
+    //物件也會有預設值的概念
+    let { family: ming = '小明'} = {}
+    //ming : '小明'
+    console.log(ming)
+
+
+    </script>
+</body>
+</html>

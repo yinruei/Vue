@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // console.log(mom);
+        // var mom = "老媽";
+        // (function() {
+        //     console.log(mom);
+        // })();
+        // undefine:記憶體有準備位置
+        // not define
+
+        //---------------------------
+        
+        //var 作用域是function scope
+        //let 作用域是block
+
+        // function varMing(){
+        //     let ming ="小明";
+        //     if (true) {
+        //         let ming = "杰哥";
+        //         //這裡的ming依然是外層的小明，所以小明即將被取代
+        //         //var 改成 let就會變成小明
+        //     }
+        //     console.log(ming);
+        // }
+        // varMing()
+
+        //---------------------------
+        // 修改 var -> let
+        // for (let i = 0; i<10;i++) {// var i =全域變數
+        //     console.log(i);
+        //     setTimeout(function () {
+        //         console.log('這執行第' + i +'次');
+        //     },10);            
+        // }
+
+        //---------------------------
+        //const，不能重新再指派一個變數給常數，let 跟var可以
+        // const ming = "鐵錚錚男子漢";
+        // ming = "不是男子漢";
+
+        //---------------------------
+        //const 與物件，物件內的屬性卻可以的
+        // const family = {
+        //     mom: '老媽',
+        //     me:'小明',
+        //     sister:'小澄'
+        // };
+        // family.father='爸爸';
+        // console.log(family);
+        //     family = {};
+        //物件，本身是傳參考
+
+        //---------------------------
+        //額外問題，不使用let，上述答案如何解答
+        // // for (var i = 0; i<10;i++) {// var i =全域變數
+        //     // console.log('這執行第' + i +'次');
+        //     setTimeout(function () {
+        //         for (var i = 0; i<10;i++) {
+        //             console.log('這執行第' + i +'次');
+        //         }
+        //     },10);        
+
+    </script>
+</body>
+</html>

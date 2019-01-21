@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const people = [
+            {
+                name: '小明',
+                money: 500
+            },
+            {
+                name: '杰倫',
+                money: 60000
+            },
+            {
+                name: '漂亮阿姨',
+                money: 3000
+            },
+            // {
+            //     name: '老媽',
+            //     money: Infinity
+            // }
+        ];
+
+        //forEach 與 map
+        //將所有物件增加icash 有多少金額的欄位
+        // for (let i = 0; i<people.length; i++) {
+        //     console.log(people[i])
+        // }
+
+        // people.forEach(function(item, index, array) {
+        //     // console.log(item, index, array)
+        //     item.icash = item.money + 500;
+        //     item.price = item.money + 100;
+        //     console.log(item)            
+        // });
+        
+        // const newpeople = people.map(function (item, index, array) {
+        //     // item.icash = item.money + 500;
+        //     // console.log(item)
+        //     return {
+        //         ...item,
+        //         icash: item.money + 500,
+        //         price: item.money + 100
+        //     }
+        // });
+        // //map其實就是將return的結果一個一個塞回newpeople的變數裡面，這個變數基本上會以陣列的方式呈現
+        // //假設沒有return，他還是會回傳一個值，但是回傳的值是undefined
+        // //map 和foreach的差異是 foreach不會做return， map會return，然後成為一個新的陣列，而新的陣列和就的陣列毫無關係
+        // //map比較適合拿來產生新的陣列，並且在裡面做一些調整
+        // console.log(newpeople);
+        // console.log(people);
+
+        // filter-是把所有為true的部分都回傳，回傳的結果是陣列
+        // 挑出金額小於5000的物件
+        // const filterPeople = people.filter(function(item, inex) {//function後面通常不再加array，只會加item跟index
+        //     if (item.money < 1000) {
+        //         return true;//要加，不然只會傳回空陣列
+        //     }
+        // })
+
+        // console.log(filterPeople)
+
+        // find-只要找到的資料就只回傳一次，find是回傳本身的值，適合拿來找id或單一條件
+        // 找到金額 = 500的物件
+        // 找到 > 5000的物件
+        // const findPeople = people.find(function(item, index) {
+        //     if (item.money = 500) {
+        //         return true;
+        //     }
+        //     // if (item.money > 5000) {
+        //     //     return true;
+        //     // }
+        // })
+        // console.log(findPeople)
+
+        // every - 所有結果都為true, return的結果才是true
+        // 所有物件是否都超過 10000元
+        // 是否所有物件超過300元
+    //    const ans = people.every(function(item,i) {
+    //        return item.money > 10000;
+    //    })
+    //    console.log(ans);
+
+        // some - 只要部份結果是true，return的結果就會true
+        // 是否有物件超過10000元
+        // 是否有物件持有金額少於300元
+        // const ans = people.some(function(item, index) {
+        //     return item.money > 10000
+        // });
+        // console.log(ans);
+
+        //reduce - 處理每個元素後等待回傳結果，第一次處理時，代入初始值 0
+        //去掉老媽，請問剩下的人有多少錢
+        // const newNumber = people.reduce(function(prev, item, index){
+        //     console.log(prev);
+        //     // 與之前的數值加總，回傳後代入下一輪的處理
+        //     return prev + item.money
+        // }, 0)//初始值是0
+        // console.log(newNumber)
+
+        //比大小
+        const newNumber = people.reduce(function(prev, item, index){
+            console.log(prev);
+            return Math.max(prev, item.money)//Math.max會回傳裡面的最大值--例如:(0, 100)就傳回100
+        }, 0)
+        console.log('最大值', newNumber)
+    </script>
+</body>
+</html>

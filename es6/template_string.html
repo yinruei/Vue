@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    //樣板字串
+    // 將以下改寫成 Template String 寫法
+    const people = [
+        {
+            name:'小明',
+            friends: 2
+        },
+        {
+            name:'阿姨',
+            friends: 999
+        },
+        {
+            name:'杰倫',
+            frients: 0
+        }
+    ]
+    let originString = '我叫做 ' + people[0].name;
+    let originUl = '<ul>\
+        <li>我叫做 ' + people[0].name + '</li>\
+        <li>我叫做 ' + people[1].name + '</li>\
+        <li>我叫做 ' + people[2].name + '</li>\
+    </ul>';
+
+    console.log(originString, originUl);
+
+    let newString = `我叫做 ${people[0].name}`
+    console.log(newString);
+    let newUl = `
+        <ul>
+            <li>我叫做 ${people[0].name} </li>
+            <li>我叫做 ${people[1].name} </li>
+            <li>我叫做 ${people[2].name} </li>
+        </ul>
+    `
+    console.log(newUl);
+
+    //更精簡
+    newUl = `
+        <ul>
+            ${people.map(person => `<li>我叫做 ${person.name}</li>`).join('')}
+        </ul>
+    `
+    //.map會做people迴圈的處理
+    //.join('')是說如果中間有逗號就把它移除
+    console.log(newString, newUl);
+    </script>
+</body>
+</html>
