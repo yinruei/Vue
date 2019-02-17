@@ -149,7 +149,7 @@
   <!-- pre可以將資料呈現在網頁上，通常在開發中才會使用到，實際產品這個標籤是會移除的 -->
   <pre> {{ list }} </pre>
   <ul>
-    <li v-for="(item, index) in list" v-if="item.age < 25">
+    <li v-for="(item, index) in list" v-if="item.age">
       {{ index+1 }} - {{ item.name }} 年齡是 {{ item.age }} 歲
     </li>
   </ul>
