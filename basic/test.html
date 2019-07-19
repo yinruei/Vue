@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Title</title>
+</head>
+<script type="text/javascript" src = "vue.js"></script>
+<body>
+<div id = "test">
+<input type='checkbox' v-model="checkBox.checked" class='input-checkbox' @click='checkedAll'>全選
+<div v-for='checkb in checkboxData'>
+<input  type='checkbox' class='input-checkbox' @click="checkItem" v-model='checkBox.items[checkb.id]'>
+{{checkb.value}}
+</div>
+</div>
+</body>
+<script>
+var vue = new Vue({
+el:"#test",
+data:{
+checkboxData:[
+{
+id:'1',
+value:'蘋果'
+},{
+id:'2',
+value:'荔枝'
+},{
+id:'3',
+value:'香蕉'
+},{
+id:'4',
+value:'火龍果'
+}
+],
+checkBox:{
+checked:false,
+items:{}
+}
+},
+methods:{
+checkedAll: function() {
+var _this = this;
+console.log(_this.checkboxData);
+console.log(this.checkBox.items);
+this.checkboxData.forEach(function (item) {
+console.log(item.id);
+_this.checkBox.items[item.id] = _this.checkBox.checked;
+console.log(_this.checkBox.items);
+});
+//實現反選
+},
+checkItem:function(){
+var unchecked = 0;
+var _this = this;
+this.checkboxData.forEach(
+function(item) {
+unchecked  = (! _this.checkBox.items[item.id]) || 0;
+});
+_this.checkBox.checked = unchecked > 0 ? false : true;
+}
+}
+})
+</script>
+</html>
