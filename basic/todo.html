@@ -249,7 +249,7 @@ var app = new Vue({
       this.newTodo=''//可以將資料清除
     },
     removeTodo: function(todo) {
-      var newIndex = '';
+      var newIndex = ''; 
       var vm = this;
       vm.todos.forEach(function(item, key) {
         if (todo.id == item.id) {
