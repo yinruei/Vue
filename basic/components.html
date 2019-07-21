@@ -146,8 +146,11 @@
 
 <div id="app">
   <div>
-    你已經點擊 <button class="btn btn-outline-secondary btn-sm" @click="counter += 1">{{ counter }}</button> 下。
-    你已經點擊 <button class="btn btn-outline-secondary btn-sm" @click="counter += 1">{{ counter }}</button> 下。
+    你已經點擊 <button class="btn btn-outline-secondary btn-sm" @click="counter += 1"> {{ counter }} </button> 下。
+    你已經點擊 <button class="btn btn-outline-secondary btn-sm" @click="counter += 1"> {{ counter }} </button> 下。
+    <counter-component></counter-component>
+    <counter-component></counter-component>
+    <counter-component></counter-component>
     <counter-component></counter-component>
     <counter-component></counter-component>
     <counter-component></counter-component>
@@ -156,26 +159,30 @@
 
 <script>
 // 請在此撰寫 JavaScript
-//建立元件
+//建立元件,'counter-component'裡面放的是html標籤，可以自己命名
+//注意component的data是用function包的
+//用component寫法可以將他們各自獨立，不會一起綁定，所以點不同的counter-component，他的計數器也會不同
 Vue.component('counter-component', {
   data: function() {
     return {
-      counter: 0
+      counter:0
     }
   },
-  template:`
+  template: `
     <div>
-        <button class="btn btn-outline-secondary btn-sm" @click="counter += 1">{{ counter }}</button> 下。
+      你已經點擊 <button class="btn btn-outline-secondary btn-sm" @click="counter += 1">{{ counter }}</button> 下。
     </div>
   `
 })
 
+
 var app = new Vue({
-  el: '#app',
-  data: {
-    counter: 0
-  },
-});
+  el:"#app",
+  data:{
+    counter:0
+  }
+})
+
 </script>
 
 <!-- 解答：
