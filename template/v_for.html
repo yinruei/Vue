@@ -112,35 +112,41 @@
   <h4>陣列與物件的迴圈</h4>
   <p>請使用 v-for 在陣列與物件上，並且加上索引</p>
   <ul>
-    <li v-for="(item, key) in arrayData">
-      {{ key }} - {{ item.name }} {{ item.age }} 歲
+    <li 
+      v-for="(item, key) in arrayData">
+        {{ key}}-{{ item.name }} {{item.age}}
     </li>
   </ul>
   <ul>
-    
+    <li v-for="(item, key, index) in objectData">
+      {{ index }} {{ key+2 }} -{{ item.name }} {{item.age}}
+    </li>
   </ul>
   <hr>
   <h4>Key</h4>
   <p>請在範例上補上 key，並觀察其差異</p>
   <ul>
-    <li v-for="(item, key) in arrayData">
-      {{ key }} - {{ item.name }} {{ item.age }} 歲 <input type="text">
+    <li 
+      v-for="(item, key) in arrayData" :key="item.age">
+        {{ key }}-{{ item.name }} {{ item.age }}歲 <input type="text">
     </li>
   </ul>
-  <button class="btn btn-outline-primary">反轉陣列</button>
+  <button class="btn btn-outline-primary" @click="reverseArray">反轉陣列</button>
 
   <h4>Filter</h4>
   <p>請製作過濾資料</p>
-  <input type="text" class="form-control" v-model="filterText">
+  <input type="text" class="form-control" v-model="filterText" @keyup.enter="filterData">
   <ul>
-    <li v-for="(item, key) in arrayData" :key="item.age">
-      {{ key }} - {{ item.name }} {{ item.age }} 歲 <input type="text">
-    </li>
+    <li
+      v-for="(item, key) in filterArray" :key="item.age">
+        {{ key }}-{{ item.name }} {{ item.age }}歲 <input type="text">
+    >
+  </li>
   </ul>
 
   <h4>不能運作的狀況</h4>
   <p>講師說明</p>
-  <button class="btn btn-outline-primary">無法運行</button>
+  <button class="btn btn-outline-primary" @click="cantWork">無法運行</button>
   <ul>
     <li v-for="(item, key) in arrayData" :key="item.age">
       {{ key }} - {{ item.name }} {{ item.age }} 歲 <input type="text">
@@ -157,21 +163,30 @@
   <h4>Template 的運用</h4>
   <p>請將兩個 tr 一組使用 v-for</p>
   <table class="table">
-    
+    <template v-for="item in arrayData">
+      <!-- template不會被輸出 -->
+        <tr>
+          <td>{{ item.age }}</td>
+        </tr>
+        <tr>
+          <td>{{ item.name }}</td>
+        </tr>
+    </template>
   </table>
 
   <h4>v-for 與 v-if</h4>
   <p>請加上 v-if 判斷式</p>
   <ul>
-    <li v-for="(item, key) in arrayData">
-      {{ key }} - {{ item.name }} {{ item.age }} 歲
+    <li v-for="(item, key) in arrayData" v-if="item.age <= 20">
+      {{ key }} - {{ item.name }} {{ item.age }} 歲 <input type="text">
     </li>
   </ul>
 
   <h4>v-for 與 元件</h4>
   <p>講師說明</p>
   <ul>
-    <list-item :item="item" v-for="(item, key) in arrayData"></list-item>
+    <!-- <list-item :item="item" v-for="(item, key) in arrayData"></list-item> -->
+    <list-item :item="item" v-for="(item, key) in arrayData" :key="item.age"></list-item>
   </ul>
   <p>注意：現在建議元件使用 v-for 都加上 key。<a href="https://cn.vuejs.org/v2/guide/list.html#%E4%B8%80%E4%B8%AA%E7%BB%84%E4%BB%B6%E7%9A%84-v-for">參考</a></p>
 </div>
@@ -203,6 +218,7 @@ var app = new Vue({
         age: 20
       }
     ],
+
     objectData: {
       ming: {
         name: '小明',
@@ -217,11 +233,47 @@ var app = new Vue({
         age: 20
       }
     },
+
     filterArray: [],
     filterText: ''
   },
   methods: {
     // 請在此練習 JavaScript
+      reverseArray: function() {
+        this.arrayData.reverse()
+        console.log(this.arrayData)
+      },
+      filterData: function() {
+        var self = this;//this是vue裡面的所有資料,之後for迴圈this會替換掉
+        self.filterArray = self.arrayData.filter(function(item) {
+          // console.log(self.filterText, item.name, item.name.match(self.filterText))
+          return item.name.match(self.filterText);
+        });
+      },
+      cantWork: function() {
+        // 情境一
+        // this.arrayData.length = 0;
+        // console.log(this.arrayData)
+
+        // // 情境二
+        
+        // this.arrayData[0]={
+        //   name: '小強',
+        //   age: 99,
+        // }
+        // console.log(this.arrayData) //資料雖然已經被改變但是畫面不會變，這是因為我們不能使用索引去操作資料
+        
+
+        //無法運行解法
+        //若要操作資料要使用Vue.set
+        Vue.set(this.arrayData, 0, {
+          name: '小強',
+          age: 99,
+        })
+        //用vue set強制將資料寫入
+      }
+
+
 
     // 解答：
     // reverseArray: function () {
