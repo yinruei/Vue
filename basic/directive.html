@@ -140,13 +140,13 @@
 
 <div class="alert alert-secondary">
   <ol class="mb-0">
-    <li>透過指令(v-bind)的方式，將圖片加載於畫面之上</li>
+    <li>透過指令(v-bind)的方式，將圖片加載於畫面之上(屬性綁定)</li>
   </ol>
 </div>
 
 
 <div id="app">
-  <img v-bind:src="imgSrc" v-bind:class="className"  alt="">
+  <img :src="imgSrc" :class="className">
 </div>
 
 

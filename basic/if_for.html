@@ -147,11 +147,25 @@
 
 <div id="app">
   <!-- pre可以將資料呈現在網頁上，通常在開發中才會使用到，實際產品這個標籤是會移除的 -->
-  <pre> {{ list }} </pre>
+  <pre>{{list}}</pre>
+
+  <!-- (item, index) in list ---item只陣列的值, index指的是索引，不能寫反-->
   <ul>
-    <li v-for="(item, index) in list" v-if="item.age">
-      {{ index+1 }} - {{ item.name }} 年齡是 {{ item.age }} 歲
+    <!-- 判斷年齡小於25歲且大於20歲 -->
+    <li v-for="(item, index) in list" v-if="item.age < 25 && item.age > 20" >
+      {{ index+1 }} - {{ item.name }} 的年齡是  {{ item.age }} 歲
     </li>
+    <hr>
+    <!-- 判斷年齡小於25歲-->
+    <li v-for="(item, index) in list" v-if="item.age < 25">
+      {{ index+1 }} - {{ item.name }} 的年齡是  {{ item.age }} 歲
+    </li>
+    <hr>
+    <!-- 判斷年齡小於25歲或是大於20-->
+    <li v-for="(item, index) in list" v-if="item.age < 25 || item.age > 20">
+      {{ index+1 }} - {{ item.name }} 的年齡是  {{ item.age }} 歲
+    </li>
+
   </ul>
 </div>
 
@@ -159,18 +173,18 @@
 var app = new Vue({
   el: '#app',
   data: {
-    list: [
+    list : [
       {
         name: '小明',
-        age: 16
+        age: 20
       },
       {
-        name: '媽媽',
-        age: 38,
-      },
-      {
-        name: '漂亮阿姨',
+        name: '小黑',
         age: 24
+      },
+      {
+        name: '小葉',
+        age: 26
       }
     ]
   }
